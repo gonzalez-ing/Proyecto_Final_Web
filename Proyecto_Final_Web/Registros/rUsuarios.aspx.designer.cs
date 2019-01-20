@@ -31,15 +31,6 @@ namespace Proyecto_Final_Web.Form {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// UsuarioIdTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox UsuarioIdTextBox;
-        
-        /// <summary>
         /// BuscarButton control.
         /// </summary>
         /// <remarks>
@@ -47,6 +38,15 @@ namespace Proyecto_Final_Web.Form {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BuscarButton;
+        
+        /// <summary>
+        /// UsuarioIdTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox UsuarioIdTextBox;
         
         /// <summary>
         /// Label2 control.
@@ -103,6 +103,15 @@ namespace Proyecto_Final_Web.Form {
         protected global::System.Web.UI.WebControls.TextBox ClaveTextBox;
         
         /// <summary>
+        /// NuevoButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button NuevoButton;
+        
+        /// <summary>
         /// GuardarButton control.
         /// </summary>
         /// <remarks>
@@ -119,14 +128,5 @@ namespace Proyecto_Final_Web.Form {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button EliminarButton;
-        
-        /// <summary>
-        /// NuevoButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button NuevoButton;
     }
 }
