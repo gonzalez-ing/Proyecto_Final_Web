@@ -7,37 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Proyecto_Final_Web.Form {
+namespace Proyecto_Final_Web.Registros {
     
     
     public partial class rUsuarios {
-        
-        /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
-        /// BuscarButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BuscarButton;
         
         /// <summary>
         /// UsuarioIdTextBox control.
@@ -47,6 +20,15 @@ namespace Proyecto_Final_Web.Form {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox UsuarioIdTextBox;
+        
+        /// <summary>
+        /// BuscarButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BuscarButton;
         
         /// <summary>
         /// Label2 control.

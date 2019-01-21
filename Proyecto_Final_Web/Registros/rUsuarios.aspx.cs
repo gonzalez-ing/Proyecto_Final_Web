@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Proyecto_Final_Web.Form
+namespace Proyecto_Final_Web.Registros
 {
     public partial class rUsuarios : System.Web.UI.Page
     {
@@ -16,10 +16,11 @@ namespace Proyecto_Final_Web.Form
         {
 
         }
+
         void LimpiarTextBox()
         {
             UsuarioIdTextBox.Text = "";
-          NombreTextBox.Text = "";
+            NombreTextBox.Text = "";
             UsuarioTextBox.Text = "";
             ClaveTextBox.Text = "";
         }
@@ -29,10 +30,33 @@ namespace Proyecto_Final_Web.Form
 
             usuarios.Usuario = UsuarioTextBox.Text;
             usuarios.Nombre = NombreTextBox.Text;
-           usuarios.Clave = ClaveTextBox.Text;
+            usuarios.Clave = ClaveTextBox.Text;
             return usuarios;
         }
 
+
+        protected void BuscarButton_Click(object sender, EventArgs e)
+        {
+            RepositorioBase<Usuarios> repositorio = new RepositorioBase<Usuarios>();
+            Usuarios usuarios = repositorio.Buscar(int.Parse(UsuarioIdTextBox.Text));
+            if (usuarios != null)
+            {
+                NombreTextBox.Text = usuarios.Nombre;
+                UsuarioTextBox.Text = usuarios.Usuario;
+                ClaveTextBox.Text = usuarios.Clave;
+
+            }
+            else
+            {
+                Response.Write("<script>alert('Usuario No Existe');</script>");
+
+            }
+        }
+
+        protected void NuevoButton_Click(object sender, EventArgs e)
+        {
+            LimpiarTextBox();
+        }
 
         protected void GuardarButton_Click(object sender, EventArgs e)
         {
@@ -60,25 +84,6 @@ namespace Proyecto_Final_Web.Form
             // MostrarMensaje(TiposMensaje.Error, "No fue posible terminar la transacción");
         }
 
-        protected void BuscarButton_Click(object sender, EventArgs e)
-        {
-            RepositorioBase<Usuarios> repositorio = new RepositorioBase<Usuarios>();
-            Usuarios usuarios = repositorio.Buscar(int.Parse(UsuarioIdTextBox.Text));
-            if (usuarios != null)
-            {
-                NombreTextBox.Text = usuarios.Nombre;
-                UsuarioTextBox.Text = usuarios.Usuario;
-                ClaveTextBox.Text = usuarios.Clave;
-
-            }
-            else
-            {
-                Response.Write("<script>alert('Usuario  no existe');</script>");
-               
-            }
-
-        }
-
         protected void EliminarButton_Click(object sender, EventArgs e)
         {
             BLL.RepositorioBase<Usuarios> repositorio = new BLL.RepositorioBase<Usuarios>();
@@ -87,19 +92,10 @@ namespace Proyecto_Final_Web.Form
             var categoria = repositorio.Buscar(id);
 
             if (categoria == null)
-                Response.Write("<script>alert('Error al Eliminar');</script>");
+                Response.Write("<script>alert('Error Al Eliminar');</script>");
             else
                 repositorio.Eliminar(id);
-            Response.Write("<script>alert(' Usuario Eliminada');</script>");
-        }
-
-        protected void NuevoButton_Click(object sender, EventArgs e)
-        {
-            LimpiarTextBox();
+            Response.Write("<script>alert('Usuario Eliminado');</script>");
         }
     }
 }
-    
-
-
-   

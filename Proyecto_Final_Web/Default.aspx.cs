@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Proyecto_Final_Web.Form
+namespace Proyecto_Final_Web
 {
-    public partial class UsuarioForm : System.Web.UI.Page
+    public partial class Default : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
