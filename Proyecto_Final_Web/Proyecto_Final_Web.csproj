@@ -102,6 +102,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Reportes\ClienteReporteView.aspx" />
+    <Content Include="Reportes\ProductosReporteView.aspx" />
     <Content Include="Reportes\UsuarioReporteView.aspx" />
     <Content Include="Resources\chat-tay-rua-anh-huong-den-suc-khoe-thai-nhi.jpg" />
     <Content Include="Resources\client-1295901_960_720.png" />
@@ -130,8 +132,10 @@
     <Content Include="content\toastr.css" />
     <Content Include="content\toastr.min.css" />
     <Content Include="Default.aspx" />
+    <Content Include="UI\Consultas\cClientes.aspx" />
+    <Content Include="UI\Consultas\cProductos.aspx" />
     <Content Include="UI\Consultas\cUsuarios.aspx" />
-    <Content Include="UI\Registros\Login.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="UI\Registros\rClientes.aspx" />
     <Content Include="UI\Registros\rProductos.aspx" />
     <Content Include="UI\Registros\rUsuarios.aspx" />
@@ -159,6 +163,32 @@
     <Content Include="content\bootstrap-reboot.css.map" />
     <Content Include="content\bootstrap-grid.min.css.map" />
     <Content Include="content\bootstrap-grid.css.map" />
+    <Content Include="ClientesDataSet.xsc">
+      <DependentUpon>ClientesDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="ClientesDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ClientesDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="ClientesDataSet.xss">
+      <DependentUpon>ClientesDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="ProductosDataSet.xsc">
+      <DependentUpon>ProductosDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="ProductosDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProductosDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="ProductosDataSet.xss">
+      <DependentUpon>ProductosDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\productosgonzalez - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\productosgonzalez - Web Deploy1.pubxml" />
+    <None Include="Properties\PublishProfiles\productosgonzalez - Web Deploy2.pubxml" />
+    <None Include="Properties\PublishProfiles\productosgonzalez - Web Deploy3.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -182,10 +212,34 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientesDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientesDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ProductosDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductosDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ClienteReporteView.aspx.cs">
+      <DependentUpon>ClienteReporteView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\ClienteReporteView.aspx.designer.cs">
+      <DependentUpon>ClienteReporteView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ProductosReporteView.aspx.cs">
+      <DependentUpon>ProductosReporteView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\ProductosReporteView.aspx.designer.cs">
+      <DependentUpon>ProductosReporteView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reportes\UsuarioReporteView.aspx.cs">
       <DependentUpon>UsuarioReporteView.aspx</DependentUpon>
@@ -203,6 +257,20 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Consultas\cClientes.aspx.cs">
+      <DependentUpon>cClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Consultas\cClientes.aspx.designer.cs">
+      <DependentUpon>cClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Consultas\cProductos.aspx.cs">
+      <DependentUpon>cProductos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Consultas\cProductos.aspx.designer.cs">
+      <DependentUpon>cProductos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Consultas\cUsuarios.aspx.cs">
       <DependentUpon>cUsuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -210,11 +278,11 @@
     <Compile Include="UI\Consultas\cUsuarios.aspx.designer.cs">
       <DependentUpon>cUsuarios.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\Registros\Login.aspx.cs">
+    <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\Registros\Login.aspx.designer.cs">
+    <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\Registros\rClientes.aspx.cs">
@@ -307,9 +375,12 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Reportes\ListadoUsuarios.rdlc" />
+    <Content Include="Reportes\ListadoClientes.rdlc" />
+    <Content Include="Reportes\ListadoProductos.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reportes\ListadoUsuarios.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

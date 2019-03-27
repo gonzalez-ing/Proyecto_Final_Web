@@ -43,29 +43,61 @@ namespace BLL
             return facturas;
         }
 
-        //public override List<Facturas> GetList(Expression<Func<Facturas, bool>> expression)
-        //{
-        //    Contexto contexto = new Contexto();
-        //    List<Facturas> lista = new List<Facturas>();
-        //    try
-        //    {
-        //        lista = contexto.factura.Where(expression).ToList();
-        //        foreach (var item in lista)
-        //        {
-        //            item.Detalle.Count();
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        contexto.Dispose();
-        //    }
+        public override List<Facturas> GetList(Expression<Func<Facturas, bool>> expression)
+        {
+            Contexto contexto = new Contexto();
+            List<Facturas> lista = new List<Facturas>();
+            try
+            {
+                lista = contexto.factura.Where(expression).ToList();
+                foreach (var item in lista)
+                {
+                    item.Detalle.Count();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
 
-        //    return lista;
-        //}
+            return lista;
+        }
+
+        public override bool Eliminar(int id)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                Facturas facturas = contexto.factura.Find(id);
+
+                foreach (var item in facturas.Detalle)
+                {
+                    contexto.producto.Find(item.ProductoId).Inventario += item.Cantidad;
+
+                }
+                contexto.factura.RemoveRange(contexto.factura.Where(d => d.FacturaId == id));
+                contexto.factura.Remove(facturas);
+                contexto.SaveChanges();
+                paso = true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+
+            return paso;
+        }
 
         public override bool Modificar(Facturas facturas)
         {

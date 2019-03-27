@@ -16,7 +16,6 @@ namespace Proyecto_Final_Web.UI.Registros
         {
             if (!Page.IsPostBack)
             {
-              //  LlenarClase();
                 FechaTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 int id = Utils.ToInt(Request.QueryString["id"]);
                 if (id > 0)
@@ -27,7 +26,7 @@ namespace Proyecto_Final_Web.UI.Registros
                     if (cliente == null)
                         Utils.ShowToastr(this, "Error  ", "Error", "error");
                     else
-                        LlenarClase(cliente);
+                        LlenaCampos(cliente);
                 }
             }
         }
@@ -42,6 +41,17 @@ namespace Proyecto_Final_Web.UI.Registros
             cliente.Telefono = TelefonoTextBox.Text;
 
             return cliente;
+        }
+
+        private void LlenaCampos(Clientes cliente)
+        {
+            ClienteIdTextBox.Text = cliente.ClienteId.ToString();
+            FechaTextBox.Text = cliente.Fecha.ToString("yyyy-MM-dd");//para traer la fecha se debe pasa un toString de atras para delante (ano-mes-dia)
+            NombreTextBox.Text = cliente.Nombre;
+            DireccionTextBox.Text = cliente.Direccion;
+            CedulaTextBox.Text = cliente.Cedula;
+            TelefonoTextBox.Text = cliente.Telefono;
+
         }
 
         private void Limpiar()
@@ -127,7 +137,7 @@ namespace Proyecto_Final_Web.UI.Registros
 
                     Utils.ShowToastr(this, " Encontrado ", "Success", "info");
                     Limpiar();
-                    LlenarClase(clientes);
+                    LlenaCampos(clientes);
                 }
                 else
                 {

@@ -44,36 +44,24 @@ namespace Proyecto_Final_Web.Registros
             return usuarios;
         }
 
-
-        protected void BuscarButton_Click(object sender, EventArgs e)
+        protected void ConfirmarCustomValidator_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            RepositorioBase<Usuarios> repositorio = new RepositorioBase<Usuarios>();
-            Usuarios usuarios = repositorio.Buscar(Utils.ToInt(UsuarioIdTextBox.Text));
-
-            if (usuarios != null)
+            if (ConfirmarTextBox1.Text != ContrasenaTextBox.Text)
             {
-                Utils.ShowToastr(this, "Encontrado", "Success", "info");
-                NombreTextBox.Text = usuarios.Nombre;
-                NombreUsuarioTextBox1.Text = usuarios.NombreUsuario;
-                CorreoTextBox1.Text = usuarios.Email;
-                ContrasenaTextBox.Text = usuarios.Clave;
-                ConfirmarTextBox1.Text = usuarios.ComprobarClave;
-                TelefonoTextBox1.Text = usuarios.Telefono;
-                CelularTextBox1.Text = usuarios.Celular;
-                tipoUsuarioDropDownList.Text = usuarios.TipoUsuario;
+                args.IsValid = false;
             }
             else
             {
-                Utils.ShowToastr(this, "No Se Encontro  Resultado", "Error", "error");
+                args.IsValid = true;
             }
         }
 
-        protected void NuevoButton_Click(object sender, EventArgs e)
+        protected void nuevoButton_Click1(object sender, EventArgs e)
         {
             Limpiar();
         }
 
-        protected void GuardarButton_Click(object sender, EventArgs e)
+        protected void guardarButton_Click1(object sender, EventArgs e)
         {
             BLL.RepositorioBase<Usuarios> repositorio = new BLL.RepositorioBase<Usuarios>();
             Usuarios usuarios = new Usuarios();
@@ -110,10 +98,9 @@ namespace Proyecto_Final_Web.Registros
                     }
                 }
             }
-
         }
 
-        protected void eliminarutton_Click(object sender, EventArgs e)
+        protected void eliminarutton_Click1(object sender, EventArgs e)
         {
             BLL.RepositorioBase<Usuarios> repositorio = new BLL.RepositorioBase<Usuarios>();
             int id = Utils.ToInt(UsuarioIdTextBox.Text);
@@ -126,19 +113,28 @@ namespace Proyecto_Final_Web.Registros
             else
                 repositorio.Eliminar(id);
             Utils.ShowToastr(this, " ELIMINADO ", "Info", "info");
-
-
         }
 
-        protected void ConfirmarCustomValidator_ServerValidate(object source, ServerValidateEventArgs args)
+        protected void BuscarButton_Click1(object sender, EventArgs e)
         {
-            if (ConfirmarTextBox1.Text != ContrasenaTextBox.Text)
+            RepositorioBase<Usuarios> repositorio = new RepositorioBase<Usuarios>();
+            Usuarios usuarios = repositorio.Buscar(Utils.ToInt(UsuarioIdTextBox.Text));
+
+            if (usuarios != null)
             {
-                args.IsValid = false;
+                Utils.ShowToastr(this, "Encontrado", "Success", "info");
+                NombreTextBox.Text = usuarios.Nombre;
+                NombreUsuarioTextBox1.Text = usuarios.NombreUsuario;
+                CorreoTextBox1.Text = usuarios.Email;
+                ContrasenaTextBox.Text = usuarios.Clave;
+                ConfirmarTextBox1.Text = usuarios.ComprobarClave;
+                TelefonoTextBox1.Text = usuarios.Telefono;
+                CelularTextBox1.Text = usuarios.Celular;
+                tipoUsuarioDropDownList.Text = usuarios.TipoUsuario;
             }
             else
             {
-                args.IsValid = true;
+                Utils.ShowToastr(this, "No Se Encontro  Resultado", "Error", "error");
             }
         }
     }

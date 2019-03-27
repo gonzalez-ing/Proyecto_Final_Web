@@ -14,7 +14,7 @@ namespace Proyecto_Final_Web.UI.Registros
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void Limpiar()
@@ -41,6 +41,16 @@ namespace Proyecto_Final_Web.UI.Registros
             producto.Inventario = Utils.ToInt(InventarioTextBox.Text);
 
             return producto;
+        }
+
+        private void LlenaCampos(Productos productos)
+        {
+            ProductoIdTextBox.Text = productos.ProductoId.ToString();
+            NombreTextBox.Text = productos.Nombre.ToString();
+            CostoTextBox.Text = productos.Costo.ToString();
+            PrecioTextBox.Text = productos.Precio.ToString();
+            GananciaTextBox.Text = productos.Ganancia.ToString();
+            InventarioTextBox.Text = productos.Inventario.ToString();
         }
 
         protected void guardarButton_Click(object sender, EventArgs e)
@@ -93,7 +103,7 @@ namespace Proyecto_Final_Web.UI.Registros
                 {
                     Utils.ShowToastr(this, " Encontrado ", "Success", "info");
                     Limpiar();
-                    LlenarClase(producto);
+                    LlenaCampos(producto);
                 }
                 else
                 {

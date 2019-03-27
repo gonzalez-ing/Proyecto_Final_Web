@@ -111,6 +111,7 @@ namespace Proyecto_Final_Web.UI.Registros
             }
             else
             {
+                Limpiar();
                 paso = repositorio.Modificar(facturas);
                 Utils.ShowToastr(this, "Modificado", "Info", "info");
             }
@@ -119,18 +120,19 @@ namespace Proyecto_Final_Web.UI.Registros
         protected void BuscarLinkButton_Click(object sender, EventArgs e)
         {
             DetalleVentas repositorio = new DetalleVentas();
-            var ventas = repositorio.Buscar(
+            var facturas = repositorio.Buscar(
             Utils.ToInt(FacturaIdTextBox.Text));
-            if (ventas != null)
+            if (facturas != null)
             {
-                LlenarCampos(ventas);
+                Limpiar();
+                LlenarCampos(facturas);
                 Utils.ShowToastr(this, "Busqueda exitosa", "Exito");
             }
             else
             {
-                //Limpiar();
+                Limpiar();
                 Utils.ShowToastr(this,
-               "No se pudo encontrar lo Buscado",
+               "No se pudo encontrar la busqueda",
                "Error", "error");
             }
         }
@@ -227,5 +229,26 @@ namespace Proyecto_Final_Web.UI.Registros
             else
                 TotalTextBox.Text = " ";
         }
+
+        protected void eliminarutton_Click(object sender, EventArgs e)
+        {
+            DetalleVentas repositorio = new DetalleVentas();
+            Facturas facturas = repositorio.Buscar(Utils.ToInt(FacturaIdTextBox.Text));
+
+            if (facturas != null)
+            {
+                repositorio.Eliminar(facturas.FacturaId);
+                Utils.ShowToastr(this, "Registro eliminado", "Exito", "success");
+                Limpiar();
+            }
+            else
+            {
+                Utils.ShowToastr(this, "Error al   eliminr", "Error", "error");
+
+                Limpiar();
+            }
+        }
+
     }
 }
+    
