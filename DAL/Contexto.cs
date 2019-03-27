@@ -13,18 +13,12 @@ namespace Proyecto_Final_Aplicada.DAL
         public DbSet<Usuarios> usuario { get; set; }
         public DbSet<Clientes> clientes { get; set; }
         public DbSet<Productos> producto { get; set; }
-        public DbSet<EntradaProductos> entrada { get; set; }
         public DbSet<Facturas> factura { get; set; }
         public DbSet<FacturasDetalles> FacturaDetalle { get; set; }
 
         public Contexto() : base("ConStr")
         {
 
-        }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
         }
     } 
 }

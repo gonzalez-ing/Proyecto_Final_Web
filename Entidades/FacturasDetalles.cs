@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Final_Aplicada.Entidades
 {
+    [Serializable]
     public class FacturasDetalles
     {
         [Key]
@@ -17,6 +18,9 @@ namespace Proyecto_Final_Aplicada.Entidades
         public int Cantidad { get; set; }
         public decimal Precio { get; set; }
         public decimal Importe { get; set; }
+
+        [ForeignKey("ProductoId")]
+        public virtual Productos producto { get; set; }
 
         public FacturasDetalles()
         {

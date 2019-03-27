@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Final_Aplicada.Entidades
 {
+    [Serializable]
     public class Productos
     {
         [Key]
