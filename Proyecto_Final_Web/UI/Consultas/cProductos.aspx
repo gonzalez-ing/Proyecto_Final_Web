@@ -4,22 +4,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
      <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
-    <div class="container">
-        <h2 class="card-title mb-4 mt-1">Consulta De Productos </h2>
-    </div>
+
+    <div <h2 class="card-header text-uppercase text-center text-primary"> Consulta De Productos </h2> </div>
     <div class="form-row">
 
-        <div class="form-group ">
-            <asp:Label Text="Desde:" runat="server" />
-            <asp:TextBox ID="DesdeTextBox" class="form-control input-group" TextMode="Date" runat="server" />
-        </div>
-        <div class="form-group ">
-            <asp:Label Text="Hasta:" runat="server"></asp:Label>
-            <asp:TextBox ID="HastaTextBox" class="form-control input-group" TextMode="Date" runat="server" />
-
-        </div>
+      
         <div class="form-group ">
             <asp:DropDownList ID="BuscarPorDropDownList" runat="server" CssClass="form-control input-group">
+                <asp:ListItem>Todos</asp:ListItem>
                 <asp:ListItem>Producto Id</asp:ListItem>
                 <asp:ListItem>Nombre</asp:ListItem>
             </asp:DropDownList>

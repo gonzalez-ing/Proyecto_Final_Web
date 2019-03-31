@@ -7,7 +7,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
     <div class="card card-register mx-auto mt-5">
-        <div class="card-header text-uppercase text-center text-primary">Facturacion </div>
+        <div class="card-header text-uppercase text-center text-primary"> Facturacion </div>
         <div class="card-body">
             <div class="form-row">
                 <div class="form-group col-md-1">
@@ -65,7 +65,7 @@
                     </div>
 
                 <div class="col-lg-1 p-0">
-                    <asp:LinkButton ID="LinkButton" CssClass="btn btn-outline-success mt-4" ValidationGroup="Agregar" runat="server">
+                    <asp:LinkButton ID="LinkButton" CssClass="btn btn-outline-success mt-4" ValidationGroup="Agregar" runat="server" OnClick="LinkButton_Click">
                                 <span class="fa fa-plus"></span>
                                      Agregar
                     </asp:LinkButton>
@@ -78,19 +78,8 @@
                 </div>
           
             <div class="form-row">
-                <asp:GridView ID="DetalleGridView" CssClass=" col-md-offset-4 col-sm-offset-4" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Width="244px" AutoGenerateColumns="false">
-                    <AlternatingRowStyle BackColor="White" />
-
-                    <EditRowStyle BackColor="#2461BF" />
-                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                    <RowStyle BackColor="#EFF3FB" />
-                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                <asp:GridView ID="DetalleGridView" CssClass=" col-md-offset-4 col-sm-offset-4" runat="server" CellPadding="4" ForeColor="Black" GridLines="None" Width="244px" AutoGenerateColumns="false" BackColor="#FF9966">
+                    <AlternatingRowStyle BackColor="white" />
                     <Columns>
                         <asp:BoundField DataField="Id" HeaderText="Id" />
                         <asp:BoundField DataField="ProductoId" HeaderText="Producto" />
@@ -105,7 +94,7 @@
         <div class="col-md-4 col-md-offset-3">
                 <div class="form-group">
                     <asp:Button class="btn btn-primary" ID="nuevoButton" ValidationGroup="Nuevo" runat="server" Text="Nuevo" />
-                    <asp:Button class="btn btn-success" ValidationGroup="Guardar" ID="guardarButton" runat="server" Text="Guardar" />
+                    <asp:Button class="btn btn-success" ValidationGroup="Guardar" ID="guardarButton" runat="server" Text="Guardar" OnClick="guardarButton_Click" />
                     <asp:Button class="btn btn-danger" ID="eliminarutton" ValidationGroup="Buscar" runat="server" Text="Eliminar" OnClick="eliminarutton_Click" />
                 </div>
             </div>

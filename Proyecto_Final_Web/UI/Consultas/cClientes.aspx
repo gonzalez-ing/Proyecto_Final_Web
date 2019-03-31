@@ -5,9 +5,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
-    <div class="container">
-        <h2 class="card-title mb-4 mt-1">Consulta De Clientes </h2>
-    </div>
+
+     <div <h2 class="card-header text-uppercase text-center text-primary"> Consulta De Clientes </h2> </div>
     <div class="form-row">
 
         <div class="form-group ">
@@ -20,20 +19,25 @@
 
         </div>
         <div class="form-group ">
+            <asp:Label Text="Seleccione:" runat="server" />
             <asp:DropDownList ID="BuscarPorDropDownList" runat="server" CssClass="form-control input-group">
+                <asp:ListItem>Todos</asp:ListItem>
                 <asp:ListItem>Cliente Id</asp:ListItem>
                 <asp:ListItem>Fecha</asp:ListItem>
                 <asp:ListItem>Nombre</asp:ListItem>
             </asp:DropDownList>
         </div>
         <div class="form-group ">
+            <asp:Label Text="Filtro:" runat="server" />
             <asp:TextBox ID="FiltroTextBox" runat="server" CssClass=" form-control input-group "></asp:TextBox>
         </div>
         <div class="form-group">
+            <asp:Label Text="Buscar:" runat="server" />
             <asp:Button ID="BuscarButton" runat="server" Class="btn btn-success input-group" Text="Buscar" OnClick="BuscarButton_Click" />
         </div>
 
         <div class="form-group">
+             <asp:Label Text="Imprimir:" runat="server" />
             <button type="button" class="btn btn-outline-info input-group" data-toggle="modal" data-target=".bd-example-modal-lg">Imprimir </button>
 
         </div>

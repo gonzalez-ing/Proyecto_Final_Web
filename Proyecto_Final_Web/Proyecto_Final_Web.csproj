@@ -105,6 +105,7 @@
     <Content Include="Reportes\ClienteReporteView.aspx" />
     <Content Include="Reportes\ProductosReporteView.aspx" />
     <Content Include="Reportes\UsuarioReporteView.aspx" />
+    <Content Include="Reportes\VentasReporteView.aspx" />
     <Content Include="Resources\chat-tay-rua-anh-huong-den-suc-khoe-thai-nhi.jpg" />
     <Content Include="Resources\client-1295901_960_720.png" />
     <Content Include="Resources\cuadro-limpieza.jpg" />
@@ -136,6 +137,7 @@
     <Content Include="UI\Consultas\cProductos.aspx" />
     <Content Include="UI\Consultas\cUsuarios.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="UI\Consultas\cVentas.aspx" />
     <Content Include="UI\Registros\rClientes.aspx" />
     <Content Include="UI\Registros\rProductos.aspx" />
     <Content Include="UI\Registros\rUsuarios.aspx" />
@@ -248,6 +250,13 @@
     <Compile Include="Reportes\UsuarioReporteView.aspx.designer.cs">
       <DependentUpon>UsuarioReporteView.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\VentasReporteView.aspx.cs">
+      <DependentUpon>VentasReporteView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\VentasReporteView.aspx.designer.cs">
+      <DependentUpon>VentasReporteView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -284,6 +293,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Consultas\cVentas.aspx.cs">
+      <DependentUpon>cVentas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Consultas\cVentas.aspx.designer.cs">
+      <DependentUpon>cVentas.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\Registros\rClientes.aspx.cs">
       <DependentUpon>rClientes.aspx</DependentUpon>
@@ -326,6 +342,11 @@
       <DependentUpon>UsuarioDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Utilitarios\Utils.cs" />
+    <Compile Include="VentasDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VentasDataSet.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -351,6 +372,17 @@
     </None>
     <Content Include="UsuarioDataSet.xss">
       <DependentUpon>UsuarioDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="VentasDataSet.xsc">
+      <DependentUpon>VentasDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="VentasDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>VentasDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="VentasDataSet.xss">
+      <DependentUpon>VentasDataSet.xsd</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -381,6 +413,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Reportes\ListadoUsuarios.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reportes\ListadoVentas.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -39,7 +39,6 @@ namespace Proyecto_Final_Web.UI.Registros
             CantidadTextBox.Text = "";
             PrecioTextBox.Text = "";
             TotalTextBox.Text = "";
-
             ViewState["Detalle"] = new Facturas();
         }
 
@@ -89,39 +88,18 @@ namespace Proyecto_Final_Web.UI.Registros
 
         private void LlenarCampos(Facturas facturas)
         {
-            ClienteDropDownList.SelectedValue = facturas.ClienteId.ToString();
+            Facturas factura = (Facturas)ViewState["Detalle"];
+            DetalleVentas DetalleVenta = new DetalleVentas();
+         // ClienteDropDownList.SelectedValue = factura.ClienteId.ToString();
             DetalleGridView.DataSource = facturas.Detalle;
             DetalleGridView.DataBind();
-            TotalTextBox.Text = facturas.Total.ToString();
-        }
-
-        protected void guardarButton_Click(object sender, EventArgs e)
-        {
-            bool paso = false;
-            DetalleVentas repositorio = new DetalleVentas();
-
-            Facturas facturas = LlenarClase();
-
-            if (Utils.ToInt(FacturaIdTextBox.Text) == 0)
-            {
-
-                paso = repositorio.Guardar(facturas);
-                Limpiar();
-                 Utils.ShowToastr(this, "GUARDADO", "Success", "success");
-            }
-            else
-            {
-                Limpiar();
-                paso = repositorio.Modificar(facturas);
-                Utils.ShowToastr(this, "Modificado", "Info", "info");
-            }
+            TotalTextBox.Text = factura.Total.ToString();
         }
 
         protected void BuscarLinkButton_Click(object sender, EventArgs e)
         {
             DetalleVentas repositorio = new DetalleVentas();
-            var facturas = repositorio.Buscar(
-            Utils.ToInt(FacturaIdTextBox.Text));
+            var facturas = repositorio.Buscar(Utils.ToInt(FacturaIdTextBox.Text));
             if (facturas != null)
             {
                 Limpiar();
@@ -142,24 +120,49 @@ namespace Proyecto_Final_Web.UI.Registros
             Limpiar();
         }
 
+
+        protected void ProductoDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FiltraPrecio();
+            ImporteTextBox.Text = Calculos.Importe(Utils.ToDecimal(PrecioTextBox.Text), Utils.ToDecimal(CantidadTextBox.Text)).ToString();
+        }
+
+        private string SubTotal()
+        {
+            decimal total = 0;
+            foreach (var item in ((Facturas)ViewState["Detalle"]).Detalle)
+            {
+                total += Calculos.CalcularSubTotal(Convert.ToDecimal(item.Importe));
+
+            }
+            return TotalTextBox.Text = total.ToString();
+        }
+
+        protected void ImporteTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (ImporteTextBox.Text != " ")
+                TotalTextBox.Text = Calculos.CalcularSubTotal(Utils.ToDecimal(ImporteTextBox.Text)).ToString();
+            else
+                TotalTextBox.Text = " ";
+        }
+
         protected void LinkButton_Click(object sender, EventArgs e)
         {
             var ventaAnt = FacturaRepositorio.Buscar(Utils.ToInt(FacturaIdTextBox.Text));
             bool paso = false;
 
-            //if (Utils.ToInt(ProductoDropDownList.SelectedValue == DetalleGridView.ro))
             if (DetalleGridView.Rows.Count > 0)
             {
                 for (int i = 0; i < ((Facturas)ViewState["Detalle"]).Detalle.Count; i++)
                 {
-                    if (((Facturas)ViewState["Detalle"]).Detalle[i].ProductoId == 
+                    if (((Facturas)ViewState["Detalle"]).Detalle[i].ProductoId ==
                         Utils.ToInt(ProductoDropDownList.SelectedValue.ToString()))
                     {
-                        ((Facturas)ViewState["Detalle"]).Detalle[i].Cantidad = 
-                        ((Facturas)ViewState["Detalle"]).Detalle[i].Cantidad 
+                        ((Facturas)ViewState["Detalle"]).Detalle[i].Cantidad =
+                        ((Facturas)ViewState["Detalle"]).Detalle[i].Cantidad
                          + Utils.ToInt(CantidadTextBox.Text.ToString());
-                        ((Facturas)ViewState["Detalle"]).Detalle[i].Importe = 
-                        ((Facturas)ViewState["Detalle"]).Detalle[i].Cantidad 
+                        ((Facturas)ViewState["Detalle"]).Detalle[i].Importe =
+                        ((Facturas)ViewState["Detalle"]).Detalle[i].Cantidad
                       * ((Facturas)ViewState["Detalle"]).Detalle[i].Precio;
                         paso = true;
                         break;
@@ -199,35 +202,32 @@ namespace Proyecto_Final_Web.UI.Registros
                 }
             }
 
-            ViewState["Venta"] = facturas;
+            ViewState["Facturas"] = facturas;
             DetalleGridView.DataSource = ((Facturas)ViewState["Detalle"]).Detalle;
             DetalleGridView.DataBind();
             SubTotal();
         }
 
-        protected void ProductoDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        protected void guardarButton_Click(object sender, EventArgs e)
         {
-            FiltraPrecio();
-            ImporteTextBox.Text = Calculos.Importe(Utils.ToDecimal(PrecioTextBox.Text), Utils.ToDecimal(CantidadTextBox.Text)).ToString();
-        }
+            bool paso = false;
+            DetalleVentas repositorio = new DetalleVentas();
 
-        private string SubTotal()
-        {
-            decimal total = 0;
-            foreach (var item in ((Facturas)ViewState["Detalle"]).Detalle)
+            Facturas facturas = LlenarClase();
+
+            if (Utils.ToInt(FacturaIdTextBox.Text) == 0)
             {
-                total += Calculos.CalcularSubTotal(Convert.ToDecimal(item.Importe));
 
+                paso = repositorio.Guardar(facturas);
+                Limpiar();
+                Utils.ShowToastr(this, "GUARDADO", "Success", "success");
             }
-            return TotalTextBox.Text = total.ToString();
-        }
-
-        protected void ImporteTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (ImporteTextBox.Text != " ")
-                TotalTextBox.Text = Calculos.CalcularSubTotal(Utils.ToDecimal(ImporteTextBox.Text)).ToString();
             else
-                TotalTextBox.Text = " ";
+            {
+                Limpiar();
+                paso = repositorio.Modificar(facturas);
+                Utils.ShowToastr(this, "Modificado", "Info", "info");
+            }
         }
 
         protected void eliminarutton_Click(object sender, EventArgs e)
@@ -248,7 +248,6 @@ namespace Proyecto_Final_Web.UI.Registros
                 Limpiar();
             }
         }
-
     }
 }
     
