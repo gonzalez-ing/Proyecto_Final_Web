@@ -46,12 +46,10 @@
             <asp:GridView ID="DatosGridView" runat="server" class="table table-condensed table-bordered table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="SkyBlue" />
                 <Columns>
-                    <asp:BoundField DataField="Id" HeaderText="Id" />
-                    <asp:BoundField DataField="Factura Id" HeaderText="FacturaId" />
-                   <asp:BoundField DataField="Producto Id" HeaderText="ProductoId" />
-                    <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />               
-                    <asp:BoundField DataField="Precio" HeaderText="Precio" />
-                    <asp:BoundField DataField="Importe" HeaderText="Importe" />           
+                    <asp:BoundField DataField="FacturaId" HeaderText="FacturaId" />
+                    <asp:BoundField DataField="ClienteId" HeaderText="ClienteId" />
+                    <asp:BoundField DataField="Fecha" HeaderText="Fecha" />               
+                    <asp:BoundField DataField="Total" HeaderText="Total" />          
                 </Columns>
             </asp:GridView>
         </div>

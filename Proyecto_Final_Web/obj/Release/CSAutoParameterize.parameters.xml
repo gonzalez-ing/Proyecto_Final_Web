@@ -3,4 +3,7 @@
   <parameter name="ConStr-Web.config Connection String" description="ConStr Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:gonzalezing.database.windows.net,1433;Initial Catalog=ProFiApi;Persist Security Info=False;User ID=adrian;Password=Ag20130121;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\adrianesteban\\Desktop\\Aplicada\ 2\\Proyecto_Final_Web\\Proyecto_Final_Web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ConStr']/@connectionString" />
   </parameter>
+  <parameter name="ProFiApiConnectionString-Web.config Connection String" description="ProFiApiConnectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=SATELLITEC55;Initial Catalog=ProFiApi;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\adrianesteban\\Desktop\\Aplicada\ 2\\Proyecto_Final_Web\\Proyecto_Final_Web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ProFiApiConnectionString']/@connectionString" />
+  </parameter>
 </parameters>

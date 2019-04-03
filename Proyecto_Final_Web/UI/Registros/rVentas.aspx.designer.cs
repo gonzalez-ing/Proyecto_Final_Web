@@ -103,15 +103,6 @@ namespace Proyecto_Final_Web.UI.Registros {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator2;
         
         /// <summary>
-        /// ImporteTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ImporteTextBox;
-        
-        /// <summary>
         /// PrecioTextBox control.
         /// </summary>
         /// <remarks>
@@ -119,6 +110,15 @@ namespace Proyecto_Final_Web.UI.Registros {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox PrecioTextBox;
+        
+        /// <summary>
+        /// ImporteTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ImporteTextBox;
         
         /// <summary>
         /// CantidadTextBox control.

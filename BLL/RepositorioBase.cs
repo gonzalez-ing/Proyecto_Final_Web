@@ -22,7 +22,7 @@ namespace BLL
         /// </summary>
         /// <param name="entity">Una instancia de la entidad a guardar</param>
         /// <returns>Retorna True si guardo o Falso si falló </returns>
-        public bool Guardar(T entity)
+        public virtual bool Guardar(T entity)
         {
             bool paso = false;
 

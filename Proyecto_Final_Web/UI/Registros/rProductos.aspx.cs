@@ -137,5 +137,10 @@ namespace Proyecto_Final_Web.UI.Registros
         {
             Limpiar();
         }
+
+        protected void PrecioTextBox_TextChanged(object sender, EventArgs e)
+        {
+            GananciaTextBox.Text = BLL.Calculos.CalcularGanancias(Utils.ToDecimal(PrecioTextBox.Text), Utils.ToDecimal(CostoTextBox.Text)).ToString();
+        }
     }
 }

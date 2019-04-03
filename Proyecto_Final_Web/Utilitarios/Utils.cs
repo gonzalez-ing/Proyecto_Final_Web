@@ -17,6 +17,14 @@ namespace FinanzasLite2._0.Utilitarios
             return retorno;
         }
 
+        public static int ToIntObjetos(object valor)
+        {
+            int retorno = 0;
+            int.TryParse(valor.ToString(), out retorno);
+
+            return retorno;
+        }
+
         public static decimal ToDecimal(string valor)
         {
             decimal retorno = 0;

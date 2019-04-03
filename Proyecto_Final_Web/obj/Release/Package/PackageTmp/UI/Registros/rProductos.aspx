@@ -51,7 +51,7 @@
             <div class="row">
                 <div class="form-group col-md-3">
                     <asp:Label Text="Precio:" runat="server" />
-                    <asp:TextBox ID="PrecioTextBox" class="form-control input-sm" AutoCompleteType="Disabled" runat="server" MaxLength="11" placeholder="Precio"></asp:TextBox>
+                    <asp:TextBox ID="PrecioTextBox" class="form-control input-sm" AutoCompleteType="Disabled" runat="server" AutoPostBack="true" OnTextChanged="PrecioTextBox_TextChanged" MaxLength="11" placeholder="Precio"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ValidationGroup="Guardar" ControlToValidate="PrecioTextBox" runat="server" ErrorMessage="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="IdRegularExpressionValidator" runat="server" ControlToValidate="PrecioTextBox" ForeColor="Red" Display="Dynamic" ErrorMessage="Porfavor ingrese un numero" ValidationExpression="(^\d*\.?\d*[0-9]+\d*$)|(^[0-9]+\d*\.\d*$)" ValidationGroup="Guardar"></asp:RegularExpressionValidator>
                 </div>
@@ -60,7 +60,7 @@
             <div class="row">
                 <div class="form-group col-md-3">
                     <asp:Label Text="Ganancia:" runat="server" />
-                    <asp:TextBox ID="GananciaTextBox" class="form-control input-sm" AutoCompleteType="Disabled" runat="server" MaxLength="11" placeholder="Ganancia"></asp:TextBox>
+                    <asp:TextBox ID="GananciaTextBox" ReadOnly="true" class="form-control input-sm" AutoCompleteType="Disabled" runat="server" MaxLength="11" placeholder="Ganancia"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ValidationGroup="Guardar" ControlToValidate="GananciaTextBox" runat="server" ErrorMessage="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="GananciaTextBox" ForeColor="Red" Display="Dynamic" ErrorMessage="Porfavor ingrese un numero" ValidationExpression="(^\d*\.?\d*[0-9]+\d*$)|(^[0-9]+\d*\.\d*$)" ValidationGroup="Guardar"></asp:RegularExpressionValidator>
                 </div>

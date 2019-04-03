@@ -12,6 +12,30 @@ namespace BLL
 {
     public class DetalleVentas : RepositorioBase<Facturas>
     {
+        public override bool Guardar(Facturas factura)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+            try
+            {
+                if (contexto.factura.Add(factura) != null)
+
+                    foreach (var item in factura.Detalle)
+                    {
+                        contexto.producto.Find(item.ProductoId).Inventario -= item.Cantidad;
+                    }
+                contexto.SaveChanges();
+                paso = true;
+
+                contexto.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return paso;
+        }
+
         public override Facturas Buscar(int id)
         {
             Facturas facturas = new Facturas();
@@ -108,9 +132,9 @@ namespace BLL
                 var Anterior = _contexto.factura.Find(facturas.FacturaId);
                 foreach (var item in Anterior.Detalle)
                 {
-                   if (!facturas.Detalle.Exists(d => d.Id == item.Id))
+                    if (!facturas.Detalle.Exists(d => d.Id == item.Id))
                     {
-                       item.producto = null;
+                        item.producto = null;
                         _contexto.Entry(item).State = EntityState.Deleted;
                     }
                 }
